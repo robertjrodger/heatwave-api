@@ -8,8 +8,17 @@ info:
     name: Robert Rodger
     email: woodenrabbit@gmail.com
 
-# Paths are filled in at runtime.
-paths: {}
+paths:
+  /ping:
+    get:
+      responses:
+        "200":
+          description: Check the presence of the service.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
 
 components:
   responses:

@@ -8,4 +8,7 @@ app = FastAPI()
 
 @app.get("/ping", response_class=PlainTextResponse)
 async def ping():
+    """
+    Check the presence of the service.
+    """
     return "pong"
