@@ -2,6 +2,7 @@
 
     % conda env create --file environment.yml
     % conda activate heatwave-api
+    % pre-commit install
     % pip install -e .'[dev]'
 
 ## Running the service locally
