@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: Dutch Heatwave Records API
+  version: 1.0.0
+  description: |-
+    The Dutch Heatwave Records API provides information about the duration and intensity of recent Dutch heatwaves.
+  contact:
+    name: Robert Rodger
+    email: woodenrabbit@gmail.com
+
+# Paths are filled in at runtime.
+paths: {}
+
+components:
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid.
+  schemas:
+    HeatwaveRecord:
+      description: Heatwave record, as per KNMI definition.
+      type: object
+      properties:
+        from_inclusive:
+          type: string
+          format: date
+        to_inclusive:
+          type: string
+          format: date
+        duration:
+          type: integer
+          format: int32
+          minimum: 5
+        number_tropical:
+          type: integer
+          format: int32
+          minimum: 3
+        max_temperature:
+          type: number
+          format: float
+          minimum: 30.0
+      required:
+        - from_inclusive
+        - to_inclusive
+        - duration
+        - number_tropical
+        - max_temperature
+  securitySchemes:
+    api-key:
+      name: x-api-key
+      type: apiKey
+      in: header
