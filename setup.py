@@ -13,7 +13,7 @@ setup(
     maintainer_email="woodenrabbit@gmail.com",
     packages=find_packages(include=["src"]),
     package_dir={"": "src"},
-    install_requires=["fastapi==0.54.1", "pandas==1.0.3"],
+    install_requires=["fastapi==0.54.1", "pandas==1.0.3", "uvicorn==0.11.5"],
     extras_require={
         "test": test_dependencies,
         "lint": lint_dependencies,
