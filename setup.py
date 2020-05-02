@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
-test_dependencies = ["pytest", "pytest-cov"]
+test_dependencies = ["pytest==5.4.1", "pytest-cov==2.8.1"]
 
-lint_dependencies = ["flake8"]
+lint_dependencies = ["flake8==3.7.9"]
 
 setup(
     name="heatwave-api",
@@ -13,7 +13,7 @@ setup(
     maintainer_email="woodenrabbit@gmail.com",
     packages=find_packages(include=["src"]),
     package_dir={"": "src"},
-    install_requires=["fastapi", "pandas"],
+    install_requires=["fastapi==0.54.1", "pandas==1.0.3"],
     extras_require={
         "test": test_dependencies,
         "lint": lint_dependencies,
