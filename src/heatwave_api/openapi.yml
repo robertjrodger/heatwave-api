@@ -39,7 +39,7 @@ components:
           type: integer
           format: int32
           minimum: 5
-        number_tropical:
+        number_tropical_days:
           type: integer
           format: int32
           minimum: 3

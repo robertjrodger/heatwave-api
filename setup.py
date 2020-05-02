@@ -13,8 +13,14 @@ setup(
     maintainer_email="woodenrabbit@gmail.com",
     packages=find_packages(include=["src"]),
     package_dir={"": "src"},
-    package_data={"": ["openapi.yml"]},
-    install_requires=["fastapi==0.54.1", "pandas==1.0.3", "uvicorn==0.11.5"],
+    package_data={"": ["openapi.yml", "archive.parquet"]},
+    install_requires=[
+        "fastapi==0.54.1",
+        "pandas==1.0.3",
+        "pyarrow",
+        "pydantic==1.5.1",
+        "uvicorn==0.11.5",
+    ],
     extras_require={
         "test": test_dependencies,
         "lint": lint_dependencies,
