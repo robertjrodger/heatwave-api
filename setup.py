@@ -6,7 +6,7 @@ lint_dependencies = ["flake8==3.7.9"]
 
 setup(
     name="heatwave-api",
-    description="Dutch Heatwave Records Service",
+    description="Dutch Heatwave Records API",
     version="1.0.0",
     url="https://github.com/robertjrodger/heatwave-api",
     maintainer="Robert Rodger",
