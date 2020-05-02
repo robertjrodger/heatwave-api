@@ -1,6 +1,3 @@
-# TODO
-# from .restapi import app
-#
-# __all__ = (
-#     "app",
-# )
+from .rest_api import app
+
+__all__ = ("app",)
