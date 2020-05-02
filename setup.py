@@ -13,8 +13,8 @@ setup(
     maintainer_email="woodenrabbit@gmail.com",
     packages=find_packages(include=["src"]),
     package_dir={"": "src"},
-    install_requires=[],
-    extras_requires={
+    install_requires=["fastapi", "pandas"],
+    extras_require={
         "test": test_dependencies,
         "lint": lint_dependencies,
         "dev": test_dependencies + lint_dependencies,
