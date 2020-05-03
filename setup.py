@@ -19,6 +19,7 @@ setup(
         "pandas==1.0.3",
         "pyarrow",
         "pydantic==1.5.1",
+        "starlette==0.13.2",
         "uvicorn==0.11.5",
     ],
     extras_require={

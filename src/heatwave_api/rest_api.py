@@ -5,13 +5,16 @@ from fastapi import FastAPI, status, Query
 from fastapi.exceptions import HTTPException
 from fastapi.responses import PlainTextResponse
 
+from . import configuration
 from .archive import HeatwaveRecordsArchive, HeatwaveRecord
+from .authentication import TrustedKeyMiddleware
 
 __all__ = "app"
 
-app = FastAPI()
-
 archive = HeatwaveRecordsArchive()
+
+app = FastAPI()
+app.add_middleware(TrustedKeyMiddleware, allowed_keys=configuration.KEYS)
 
 
 @app.get("/ping", status_code=status.HTTP_200_OK, response_class=PlainTextResponse)
