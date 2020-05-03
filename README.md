@@ -22,3 +22,5 @@ To obtain heatwave records between, eg. 1 January 2010 and 15 November 2017, inc
 To obtain a copy of the OpenAPI schema:
 
     % curl 'http://localhost:8000/openapi.json'
+    
+To view the Swagger UI documentation, point your browser to `http://localhost:8000/docs`.
