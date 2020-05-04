@@ -54,7 +54,9 @@ components:
         - number_tropical
         - max_temperature
   securitySchemes:
-    api-key:
-      name: x-api-key
+    ApiKeyAuth:
+      name: X-API-KEY
       type: apiKey
       in: header
+security:
+  - ApiKeyAuth: []
