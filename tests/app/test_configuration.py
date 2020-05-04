@@ -1,29 +1,20 @@
 import importlib
-import os
 
-from starlette import config
+import pytest
 from heatwave_api import configuration
 
+pytestmark = pytest.mark.usefixtures("clean_env")
 
-def setup_module(module):
-    # Save the existing configuration environment so we can restore it later.
-    module._os_environment = dict(os.environ)
-    module._starlette_environment = config.environ
-    os.environ.clear()
-
-
-def teardown_module(module):
-    # Restore the environment that was  in place before we started and re-initialize the settings.
-    for key, value in module._os_environment.items():
-        os.environ[key] = value
-    config.environ = module._starlette_environment
-    del module._os_environment
-    del module._starlette_environment
-    importlib.reload(configuration)
+from starlette import config
 
 
 def _load_with_environment(**kwargs):
-    """Reset the settings module, with a given environment."""
+    """Reset the settings module, with a given environment.
+
+    This helps with testing that the variables from the environment take
+    precedence over the variables in starlette.config via
+    heatwave_api.configuration.
+    """
     config.environ = config.Environ()
     for key, value in kwargs.items():
         config.environ[key] = value
