@@ -4,10 +4,9 @@ from typing import List
 from fastapi import FastAPI, status, Query
 from fastapi.exceptions import HTTPException
 from fastapi.responses import PlainTextResponse
-
-from . import configuration
-from .archive import HeatwaveRecordsArchive, HeatwaveRecord
-from .authentication import TrustedKeyMiddleware
+from heatwave_api import configuration
+from heatwave_api.archive import HeatwaveRecordsArchive, HeatwaveRecord
+from heatwave_api.authentication import TrustedKeyMiddleware
 
 __all__ = "app"
 
