@@ -3,9 +3,8 @@ from importlib.resources import open_binary
 from typing import List, Optional
 
 import pandas as pd
+from heatwave_api import static
 from pydantic import BaseModel, Field
-
-from . import static
 
 
 class HeatwaveRecord(BaseModel):
