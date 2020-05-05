@@ -3,8 +3,8 @@ from importlib.resources import open_binary
 from typing import List, Optional
 
 import pandas as pd
-from heatwave_api import static
 from pydantic import BaseModel, Field
+from heatwave_api import configuration
 
 
 class HeatwaveRecord(BaseModel):
@@ -27,8 +27,9 @@ class HeatwaveRecordsArchive:
 
     @staticmethod
     def _load_archive():
-        with open_binary(static, "archive.parquet") as archive_resource:
-            return pd.read_parquet(archive_resource)
+        return pd.read_parquet(
+            configuration.OUTPUT_DIR / configuration.ARCHIVE_FILENAME
+        )
 
     def query(
         self, from_inclusive: Optional[dt.date], to_inclusive: Optional[dt.date]

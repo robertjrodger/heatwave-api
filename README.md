@@ -13,6 +13,10 @@ Execute the following from the Terminal in your IDE:
 
 ## Running the service locally
 
+Ensure that there are two directories in the repo home directory, `output/` and 
+`data/`. `data/` should contain the de-tarballed data dump from KNMI, with the
+following directory structure: `data/1.0/1.0/YYYY/MM/*/*.gz`. Then:
+
     % VM_API_KEYS='s3krit' uvicorn --reload heatwave_api:app
     
 To verify that the API is up:
