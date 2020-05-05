@@ -13,7 +13,7 @@ setup(
     maintainer_email="woodenrabbit@gmail.com",
     packages=find_packages(include=["src"]),
     package_dir={"": "src"},
-    package_data={"": ["openapi.yml", "archive.parquet"]},
+    package_data={"": ["openapi.yml"]},
     install_requires=[
         "fastapi==0.54.1",
         "pandas==1.0.3",
