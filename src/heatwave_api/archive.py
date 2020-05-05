@@ -1,10 +1,9 @@
 import datetime as dt
-from importlib.resources import open_binary
 from typing import List, Optional
 
 import pandas as pd
-from pydantic import BaseModel, Field
 from heatwave_api import configuration
+from pydantic import BaseModel, Field
 
 
 class HeatwaveRecord(BaseModel):
