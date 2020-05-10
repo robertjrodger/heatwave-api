@@ -3,6 +3,7 @@ from typing import List, Optional
 
 import pandas as pd
 from heatwave_api import configuration
+from heatwave_api.archivist import HeatwaveRecordsArchivist
 from pydantic import BaseModel, Field
 
 
@@ -21,14 +22,19 @@ class HeatwaveRecord(BaseModel):
 
 
 class HeatwaveRecordsArchive:
+
+    __slots__ = ("archive",)
+
     def __init__(self):
         self.archive = self._load_archive()
 
     @staticmethod
     def _load_archive():
-        return pd.read_parquet(
-            configuration.OUTPUT_DIR / configuration.ARCHIVE_FILENAME
-        )
+        archive_filepath = configuration.OUTPUT_DIR / configuration.ARCHIVE_FILENAME
+        if not archive_filepath.exists():
+            archivist = HeatwaveRecordsArchivist(configuration.DATA_DIR)
+            archivist.generate_records(archive_filepath)
+        return pd.read_parquet(archive_filepath)
 
     def query(
         self, from_inclusive: Optional[dt.date], to_inclusive: Optional[dt.date]
@@ -43,11 +49,11 @@ class HeatwaveRecordsArchive:
 
         return [
             HeatwaveRecord(
-                from_inclusive=row.start_date,
-                to_inclusive=row.end_date,
+                from_inclusive=row.from_inclusive,
+                to_inclusive=row.to_inclusive,
                 duration=row.duration,
-                number_tropical_days=row.num_tropical,
-                max_temperature=row.max_temp,
+                number_tropical_days=row.number_tropical_days,
+                max_temperature=row.max_temperature,
             )
             for _, row in results.iterrows()
         ]
