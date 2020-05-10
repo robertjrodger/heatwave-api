@@ -53,7 +53,7 @@ class HeatwaveRecordsArchivist:
             .agg(sf.max("tx_dryb_10").alias("max_temperature"))
         )
 
-    def _find_potential_heatwaves(self, ddf):
+    def _find_potential_heatwaves(self, ddf: DataFrame) -> pd.DataFrame:
         previous_temp_window = Window.orderBy("date").rowsBetween(-1, -1)
         upcoming_five_days_window = Window.orderBy("date").rowsBetween(
             Window.currentRow, self.HEATWAVE_MIN_DURATION - 1
@@ -113,7 +113,9 @@ class HeatwaveRecordsArchivist:
         return pd.concat([potential_start_dates, potential_end_dates], axis=1)
 
     @staticmethod
-    def _add_potential_heatwave_ids(ddf, date_ranges_df, id_column):
+    def _add_potential_heatwave_ids(
+        ddf: DataFrame, date_ranges_df: pd.DataFrame, id_column: str
+    ):
         for idx, row in date_ranges_df.iterrows():
             ddf = ddf.withColumn(
                 id_column,
