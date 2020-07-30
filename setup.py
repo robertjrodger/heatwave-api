@@ -22,7 +22,7 @@ setup(
         "pyspark==2.4.5",
         "requests==2.23.0",
         "starlette==0.13.2",
-        "uvicorn==0.11.5",
+        "uvicorn==0.11.7",
     ],
     extras_require={
         "test": test_dependencies,
