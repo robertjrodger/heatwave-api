@@ -15,14 +15,14 @@ setup(
     package_dir={"": "src"},
     package_data={"": ["openapi.yml"]},
     install_requires=[
-        "fastapi==0.54.1",
+        "fastapi==0.60.1",
         "pandas==1.0.3",
         "pyarrow==0.17.0",
-        "pydantic==1.5.1",
+        "pydantic==1.6.1",
         "pyspark==2.4.5",
         "requests==2.23.0",
-        "starlette==0.13.2",
-        "uvicorn==0.11.5",
+        "starlette==0.13.6",
+        "uvicorn==0.11.8",
     ],
     extras_require={
         "test": test_dependencies,
