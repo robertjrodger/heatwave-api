@@ -42,10 +42,12 @@ class HeatwaveRecordsArchive:
         results = self.archive
         if from_inclusive is not None:
             results = results.loc[
-                lambda df: df["start_date"] >= from_inclusive.isoformat()
+                lambda df: df["from_inclusive"] >= from_inclusive.isoformat()
             ]
         if to_inclusive is not None:
-            results = results.loc[lambda df: df["end_date"] <= to_inclusive.isoformat()]
+            results = results.loc[
+                lambda df: df["to_inclusive"] <= to_inclusive.isoformat()
+            ]
 
         return [
             HeatwaveRecord(
